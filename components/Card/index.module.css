@@ -1,0 +1,31 @@
+.card-wrapper {
+    border: 1px red solid;
+    padding: 20px;
+}
+
+.head {
+    border: 1px blue solid;
+    display: flex;
+    justify-content: space-between;
+}
+
+.hide {
+    padding: 5px;
+    border: 1px greenyellow solid;
+}
+
+.extra {
+    border: 1px yellow solid;
+}
+
+.title {
+
+}
+
+.content{
+    border: 1px brown solid;
+    background: yellow;
+    padding: 10px;
+    /*overflow: auto;*/
+    transition: all 1s;
+}
