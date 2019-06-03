@@ -8,9 +8,25 @@
     "prop-types": "^15.7.2",
     "react": "^16.8.6"
   },
-  "devDependencies": {},
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/preset-env": "^7.4.5",
+    "babel-loader": "^8.0.6",
+    "babel-preset-react-app": "^9.0.0",
+    "css-loader": "^2.1.1",
+    "less": "^3.9.0",
+    "less-loader": "^5.0.0",
+    "mocha": "^6.1.4",
+    "rimraf": "^2.6.3",
+    "style-loader": "^0.23.1",
+    "url-loader": "^1.1.2",
+    "webpack": "^4.32.2"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "remove": "rimraf dist",
+    "build": "node script/pub.js",
+    "prepublish": "npm remove && npm build",
+    "publish": "npm publish"
   },
   "author": "haoxin_qiu",
   "license": "ISC"

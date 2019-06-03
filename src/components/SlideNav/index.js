@@ -1,5 +1,7 @@
 /**
  * 侧边功能导航栏
+ * data:2019/06/03
+ * author:haoxin_qiu
  */
 
 import React from 'react';
@@ -11,7 +13,9 @@ class SlideNav extends React.Component{
     	super(props);
     }
     render(){
-    	
+    	return <div>
+
+    	</div>
     }
 }
 

@@ -1,3 +1,4 @@
 
-export {* as default } from './src/components/SlideNav';
+export {default as SlideNav} from './src/components/SlideNav';
+
 
