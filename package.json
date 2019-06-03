@@ -1,0 +1,17 @@
+{
+  "name": "@haoxin_qiu/webaicomponents",
+  "version": "1.0.0",
+  "description": "ai components for web ai platform",
+  "main": "index.js",
+  "dependencies": {
+    "class-names": "^1.0.0",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "haoxin_qiu",
+  "license": "ISC"
+}
