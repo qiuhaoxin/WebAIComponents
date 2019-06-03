@@ -10,12 +10,14 @@ class Tab extends React.Component{
 		super(props);
 	}
 	render(){
+       return <div>
 
+       </div>
 	}
 }
 
 Tab.defaultProps={
-
+   
 }
 Tab.propTypes={
 
