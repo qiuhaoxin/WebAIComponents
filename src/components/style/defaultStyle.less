@@ -1,0 +1,27 @@
+div,
+ul,
+li,
+p{
+	padding: 0;
+	margin: 0;
+}
+
+ul{
+	list-style: none;
+}
+
+
+
+.flex(@flex:flex,@flexDir:column,@jc:center,@ai:center){
+	display: @flex;
+	flex-direction:@flexDir;
+	justify-content: @jc;
+	align-items: @ai;
+}
+
+.trans(@attr,@delay,@duration,@timeFunc){
+	transition-property: @attr;
+	transition-delay:@delay;
+	transition-duration: @duration;
+    transition-timing-function:@timeFunc;
+}

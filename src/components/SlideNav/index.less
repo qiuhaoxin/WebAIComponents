@@ -1,0 +1,43 @@
+@import '../style/defaultStyle.less';
+@prefixCls:kd-sn;
+
+.@{prefixCls}-wrapper{
+	position: fixed;
+	left:0;
+	top:0;
+	bottom: 0;
+	width:50px;
+	overflow: hidden;
+    .trans(width,0,.1s,linear); 
+    &:hover{
+      	  width:130px;
+    }
+    & > ul{
+   	  background: #343848;
+   	  height: 100%;
+   	  .flex(flex,column,flex-start,flex-start);
+   	  text-align: left;
+      color:#fff;
+      & > li{
+      	 height:50px;
+      	 width:130px;
+      	 line-height: 50px;
+      	 cursor: pointer;
+      	 .flex(inline-flex,'',flex-start,center);
+
+      	 & > img{
+      	 	width:20px;
+      	 	height: 20px;
+      	 	padding-left:15px;
+      	 	padding-right: 15px;
+      	 }
+      	 & > span{
+      	 	font-family: MicrosoftYaHei;
+			font-size: 12px;
+			color: #C1CADC;
+			letter-spacing: 0;
+			line-height: 12px;
+      	 }
+      }
+    }
+}
