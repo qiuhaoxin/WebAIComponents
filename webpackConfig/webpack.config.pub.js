@@ -44,7 +44,11 @@ module.exports={
           },{
             test:/\.(png|jpe?g|git|svg)$/,
             loader:'url-loader'
-          }
+          },{
+               test: /\.(eot|woff|svg|ttf|woff2|gif|appcache)$/,
+               exclude: /^node_modules$/,
+               loader: 'file-loader?name=[name].[ext]',
+           }
        ]
 	},
 	resolve:{

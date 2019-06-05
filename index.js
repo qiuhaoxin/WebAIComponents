@@ -5,3 +5,5 @@ export {default as TabBar} from './src/components/TabBar';
 
 
 export {default as Tab} from './src/components/Tab';
+
+export {default as Icon} from './src/components/Icon';

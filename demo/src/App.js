@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 // import SlideNav from '../../src/components/SlideNav';
-import {SlideNav,TabBar,Tab} from '../../dist/main.min.js';
+import {SlideNav,TabBar,Tab,Icon} from '../../dist/main.min.js';
 import CommonSer from '../images/commonSer.png';
 class App extends Component {
   constructor(props){
@@ -77,6 +77,8 @@ class App extends Component {
             <div onClick={this.handleAddBtns}>
                添加按钮
             </div>
+
+            <Icon type='icon-arrow_right'/>
          </div>
          
       </div>
