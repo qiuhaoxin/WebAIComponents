@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 // import SlideNav from '../../src/components/SlideNav';
-import {SlideNav} from '../../dist/main.min.js';
+import {SlideNav,Toolbar} from '../../dist/main.min.js';
 import CommonSer from '../images/commonSer.png';
+import {Button} from "antd";
 class App extends Component {
   constructor(props){
   	super(props);
@@ -17,9 +17,20 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-         <div>test</div>
-         <SlideNav data={this.data}/>
-         <img src={CommonSer}/>
+         {/*<div>test</div>*/}
+         {/*<SlideNav data={this.data}/>*/}
+         {/*<img src={CommonSer}/>*/}
+          <Toolbar
+              className={`${["test"]}`}
+              style={{margin:40}}
+              extra={
+                  <div>
+                      <Button className={"btn-down"}>新增</Button>
+                      <Button className={"btn-down"}>导入</Button>
+                      <Button className={"btn-down"}>导出</Button>
+                  </div>
+              }
+          />
       </div>
     );
   }
