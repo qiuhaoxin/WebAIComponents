@@ -15,7 +15,7 @@ class Icon extends React.Component{
         const classNames=ClassNames({
            kdIcon:true,	
            [type]:!!type,
-        })
+        },'icon');
         console.log('className is ',classNames);
 		return <span className={classNames}></span>
 	}

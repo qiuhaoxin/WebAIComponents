@@ -50,16 +50,21 @@ class App extends Component {
        {id:3,name:'销售订单'},
        {id:4,name:'销售出库单'},
        {id:5,name:'采购订单'},
+       {id:6,name:'出差申请单1'},
+       {id:7,name:'借款申请单1'},
+       {id:8,name:'差旅报销单1'},
+       {id:9,name:'销售订单1'},
+       {id:10,name:'销售出库单1'},
+       {id:11,name:'采购订单1'},
   	]
   }
   state={
   	tabBarData:null,
   }
   handleAddBtns=()=>{
-  	  const id=Math.floor(Math.random() * 5);
+  	  const id=Math.floor(Math.random() * 11);
   	  let tabBarData=this.tabBarData.filter(item=>item.id===id);
       tabBarData=tabBarData[0];
-      console.log('id',JSON.stringify(tabBarData));
   	  this.setState({
   	  	tabBarData,
   	  })
@@ -73,14 +78,12 @@ class App extends Component {
          </div>
          <div className={'content'}>
             <TabBar data={tabBarData} />
-
             <div onClick={this.handleAddBtns}>
                添加按钮
             </div>
-
-            <Icon type='icon-arrow_right'/>
          </div>
-         
+         <div>
+         </div>
       </div>
     );
   }

@@ -26,6 +26,7 @@
   },
   "scripts": {
     "remove": "rimraf dist",
+    "prebuild": "npm run remove",
     "build": "node script/pub.js"
   },
   "author": "haoxin_qiu",
