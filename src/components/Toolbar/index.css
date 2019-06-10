@@ -1,7 +1,7 @@
 
 .kd-tb-wrapper {
     padding: 20px;
-
+    min-width: 950px;
     background-color: #FFFFFF;
     border: 1px red solid;
 }
@@ -21,10 +21,23 @@
     display: flex;
 
     font-size: 18px;
-    font-weight: bold;
+    font-weight: 700;
+    color: #333;
+    letter-spacing: 0;
 }
 
 .kd-tb-down-wrapper {
     margin-top: 5px;
     /*border: 1px red solid;*/
+}
+
+.kd-tb-down-wrapper > div > button {
+
+    border: none;
+    border-radius: 2px;
+    box-sizing: inherit;
+    width: 64px;
+    height: 28px;
+    background-color: #5582F3;
+    color: #FFFFFF;
 }

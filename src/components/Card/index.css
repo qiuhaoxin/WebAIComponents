@@ -1,0 +1,37 @@
+
+.kd-card-card-wrapper{
+    border: 1px red solid;
+    /*margin: 20px;*/
+}
+
+.kd-card-head {
+
+    background-color: #E6E6E6;
+    padding: 5px;
+    display: flex;
+    justify-content: space-between;
+
+
+}
+
+.kd-card-hide {
+    padding: 5px;
+}
+
+.kd-card-extra {
+    margin-right: 20px;
+    cursor:default
+}
+
+.kd-card-title {
+    cursor: pointer;
+
+}
+
+.kd-card-content{
+
+    margin: 15px;
+    transition: all 0.5s;
+    /*overflow:hidden;*/
+    overflow:auto;
+}
