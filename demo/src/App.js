@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 // import SlideNav from '../../src/components/SlideNav';
+
 import {SlideNav,TabBar,Tab,Icon} from '../../dist/main.min.js';
 import CommonSer from '../images/commonSer.png';
+import {Button} from "antd";
 class App extends Component {
   constructor(props){
   	super(props);
@@ -73,6 +74,7 @@ class App extends Component {
   	const {tabBarData}=this.state;
     return (
       <div className="App">
+
          <div className={'slideNav'}>
             <SlideNav data={this.data}/>
          </div>
@@ -84,6 +86,21 @@ class App extends Component {
          </div>
          <div>
          </div>
+
+         {/*<div>test</div>*/}
+         {/*<SlideNav data={this.data}/>*/}
+         {/*<img src={CommonSer}/>*/}
+          <Toolbar
+              className={`${["test"]}`}
+              style={{margin:40}}
+              extra={
+                  <div>
+                      <Button className={"btn-down"}>新增</Button>
+                      <Button className={"btn-down"}>导入</Button>
+                      <Button className={"btn-down"}>导出</Button>
+                  </div>
+              }
+          />
       </div>
     );
   }

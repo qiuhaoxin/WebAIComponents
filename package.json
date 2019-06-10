@@ -4,6 +4,7 @@
   "description": "ai components for web ai platform",
   "main": "dist/main.min.js",
   "dependencies": {
+    "antd": "^3.19.2",
     "class-names": "^1.0.0",
     "prop-types": "^15.7.2",
     "react": "^16.8.6"
