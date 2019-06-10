@@ -1,0 +1,33 @@
+.kd-input {
+
+    outline: none;
+    border-radius: 0;
+    padding-left: 4px;
+
+
+    width: 200px;
+    border: none;
+    border-bottom: #a9a9a9 1px solid;
+    transition: all 0.5s;
+}
+
+.kd-input-wrapper {
+    position: relative;
+}
+
+.kd-input-wrapper > i {
+    position: absolute;
+    left: 2px;
+    top: 5px;
+    color: #a9a9a9;
+}
+
+
+.kd-input:focus {
+    width: 300px;
+    border-bottom: #a9a9a9 1px solid;
+}
+
+.input-with-prefix {
+    padding-left: 20px;
+}

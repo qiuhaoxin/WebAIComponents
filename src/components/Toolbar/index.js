@@ -2,27 +2,26 @@ import React from 'react'
 import ListFilter from '../ListFilter'
 import ClassNames from 'classnames'
 import './index.css'
+import withErrorHandler from "../Error/withErrorHandle";
+import PropTypes from "prop-types";
 
 
-const prefix = 'kd-tb'
-export default class Toolbar extends React.Component {
+const prefix = 'kd-tb';
 
-    state = {
-        filter: {
-            name: ''
-        }
-    }
+class Toolbar extends React.Component {
 
     render() {
-        const {style, className} = this.props
-        const classNames = ClassNames({[`${className}`]: className,}, `kd-tb-wrapper`)
-         return (
+
+        const {style, className} = this.props;
+        const classNames = ClassNames({[`${className}`]: className,}, `kd-tb-wrapper`);
+        return (
             <div className={classNames} style={style}>
                 <div className={`${"kd-tb-up-wrapper"}`}>
-                    <div className={`${"lkd-tb-eft-wrapper"}`}>
-                        机器人列表
-                    </div>
-                    <ListFilter/>
+                    <ListFilter
+                        filters={this.props.filters}
+                        onChange={this.props.onChange}
+                        title={this.props.title}
+                    />
                 </div>
                 <div className={`${"kd-tb-down-wrapper"}`}>
                     {this.props.extra}
@@ -31,3 +30,11 @@ export default class Toolbar extends React.Component {
         )
     }
 }
+
+Toolbar.propTypes = {
+    filters: PropTypes.array,
+    onChange: PropTypes.func,
+    title: PropTypes.string,
+};
+
+export default withErrorHandler(Toolbar)
