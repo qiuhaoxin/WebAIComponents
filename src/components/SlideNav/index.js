@@ -32,9 +32,12 @@ class SlideNav extends React.Component{
     }
     renderSecondMenu=(menuData,id)=>{
     	 const {hoverItem}=this.state;
-         const str=menuData.map(item=><li key={item.id} onClick={()=>this.handleMenuItemClick(item,id)}>
-              {item.name}
-         </li>)
+         const str=menuData.map(item=>{
+            const showNav=item.showNav;
+            return showNav ? <li key={item.id} onClick={()=>this.handleMenuItemClick(item,id)}>
+                  {item.name}
+             </li> : null
+         })
          return <ul className={`${prefixCls}-secondMenu`} style={{visibility:hoverItem===id ? 'visible' : 'hidden'}}>
              {str}
          </ul>
@@ -42,10 +45,12 @@ class SlideNav extends React.Component{
     renderNav=()=>{
     	const {data}=this.props;
     	const {hoverItem}=this.state;
-        const str=data.map(item=><li key={item.id} onMouseEnter={()=>this.handleItemHover(item)} 
-        	style={this.getItemStyle(item.id)}>
-	        <img src={item.img}/>
-        </li>)
+        const str=data.map(item=>{
+            return <li key={item.id} onMouseEnter={()=>this.handleItemHover(item)} 
+                style={this.getItemStyle(item.id)}>
+                <img src={item.img}/>
+            </li> 
+        })
     	return <ul className={`${prefixCls}-nav`}>
             {str}
     	</ul>

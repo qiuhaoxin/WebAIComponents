@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 // import SlideNav from '../../src/components/SlideNav';
 
-import {SlideNav,TabBar,Tab,Icon} from '../../dist/main.min.js';
+import {SlideNav,MenuBar,Tab,Icon} from '../../dist/main.min.js';
 import CommonSer from '../images/commonSer.png';
 import {Button} from "antd";
 class App extends Component {
@@ -14,25 +14,25 @@ class App extends Component {
         	name:'机器人管理',
         	img:require('../images/commonSer.png'),
         	children:[
-               {id:0,name:'机器人列表'},
-               {id:1,name:'机器人详情'}
+               {id:0,name:'机器人列表',showNav:true,},
+               {id:1,name:'机器人详情',showNav:true,}
         	]
         },
         {
         	id:1,
         	name:'技能管理',
         	img:require('../images/createtime.png'),
-            children:[
-               {id:0,name:'技能列表'},
-               {id:1,name:'技能详情'}
-            ]
+          children:[
+               {id:0,name:'技能列表',showNav:true,},
+               {id:1,name:'技能详情',showNav:false,}
+          ]
         },
         {
         	id:2,
         	name:'意图管理',
         	img:require('../images/creator.png'),
             children:[
-               {id:0,name:'意图列表'},
+               {id:0,name:'意图列表',showNav:true,},
             ]
         },
         {
@@ -40,7 +40,7 @@ class App extends Component {
         	name:'用户管理',
         	img:require('../images/train_intention.png'),
             children:[
-               {id:0,name:'用户列表',},
+               {id:0,name:'用户列表',showNav:true,},
             ]
         },
   	]
@@ -70,6 +70,13 @@ class App extends Component {
   	  	tabBarData,
   	  })
   }
+  handleMenuTabClick=(curTabId)=>{
+      console.log('you click tab id is ',curTabId);
+  }
+  handleMenuDelClick=(curTabId,delTabId)=>{
+      console.log('you del tab id is ',delTabId);
+      console.log('current tab id is ',curTabId);
+  }
   render() {
   	const {tabBarData}=this.state;
     return (
@@ -79,28 +86,15 @@ class App extends Component {
             <SlideNav data={this.data}/>
          </div>
          <div className={'content'}>
-            <TabBar data={tabBarData} />
+            <MenuBar data={tabBarData} onMenuTabClick={this.handleMenuTabClick} onMenuDelClick={this.handleMenuDelClick}/>
             <div onClick={this.handleAddBtns}>
                添加按钮
             </div>
          </div>
          <div>
+
          </div>
 
-         {/*<div>test</div>*/}
-         {/*<SlideNav data={this.data}/>*/}
-         {/*<img src={CommonSer}/>*/}
-          <Toolbar
-              className={`${["test"]}`}
-              style={{margin:40}}
-              extra={
-                  <div>
-                      <Button className={"btn-down"}>新增</Button>
-                      <Button className={"btn-down"}>导入</Button>
-                      <Button className={"btn-down"}>导出</Button>
-                  </div>
-              }
-          />
       </div>
     );
   }

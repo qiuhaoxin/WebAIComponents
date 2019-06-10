@@ -19,8 +19,8 @@ class TabBar extends React.Component{
     state={
     	menuData:[],//维护菜单数据
     	curSelected:-1,//当前选中菜单栏
-        isFullScreen:false,//全屏状态 true:打开全屏  false :退出全屏
-        showArrow:false,
+      isFullScreen:false,//全屏状态 true:打开全屏  false :退出全屏
+      showArrow:false,
     }
     componentWillReceiveProps(nextProps){
     	const {data}=nextProps;
@@ -54,16 +54,49 @@ class TabBar extends React.Component{
         if(this.menuList){
             menuListWidth=this.menuList.clientWidth;
         }
-        if(this.menuList > this.menuElWidth)
+        if(this.menuList > this.menuElWidth){
+
+        }
     }
     handleTabClick=(item)=>{
+       const {onMenuTabClick}=this.props;
        this.setState({
        	  curSelected:item.id,
+       },()=>{
+          //执行点击路由跳转逻辑
+          onMenuTabClick && onMenuTabClick(item.id);
        })
+    }
+    handleDelClick=(item)=>{
+      const {onMenuDelClick}=this.props;
+      let menuData=this.state.menuData.slice();
+      let idx=-1;
+      let curSelected=-1;
+      menuData.filter((itemData,index)=>{
+        if(item.id===itemData.id){
+          idx=index;
+        }
+        return item.id===itemData.id;
+      })
+      menuData.splice(idx,1);
+
+      if(menuData.length>0){
+        curSelected=menuData[menuData.length - 1].id;
+      }else{
+        curSelected=99;
+      }
+      this.setState({
+        menuData,
+        curSelected,
+      },()=>{
+        //执行相应的路由跳转
+        onMenuDelClick && onMenuDelClick(curSelected,item.id);
+      })
     }
     renderTabs=()=>{
     	const {menuData,curSelected}=this.state;
-        const str=menuData.map(item=><Tab onClick={this.handleTabClick} key={item.id} style={{marginRight:30}} 
+      const str=menuData.map(item=><Tab onClick={this.handleTabClick} onDelClick={this.handleDelClick} 
+          key={item.id} style={{marginRight:30}} 
         	data={item} isSelected={curSelected===item.id ? true : false} />)
     	return <div className={`${prefixCls}-list`} ref={el=>this.menuList=el}>
 
