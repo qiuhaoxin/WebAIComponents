@@ -13,3 +13,5 @@ export {default as Card} from './src/components/Card';
 
 export {default as KDTable} from './src/components/KDTable';
 
+export {default as Tip} from './src/components/Tip';
+
