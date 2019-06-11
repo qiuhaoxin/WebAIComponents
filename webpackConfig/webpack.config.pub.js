@@ -74,5 +74,11 @@ module.exports={
       amd:'immutable',
       root:'immutable',
     },
+    'antd':{
+      commonjs2:'antd',
+      commonjs:'antd',
+      amd:'antd',
+      root:'antd',
+    }
 	}
 }

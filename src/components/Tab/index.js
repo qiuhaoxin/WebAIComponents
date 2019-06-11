@@ -21,6 +21,10 @@ class Tab extends React.Component{
 		// 	showDecoration:true,
 		// })
 	}
+	handleDelClick=(data)=>{
+        const {onDelClick}=this.props;
+        onDelClick && onDelClick(data);
+	}
 	renderDecoration=()=>{
 		//const {showDecoration}=this.state;
 		const {isSelected}=this.props;
@@ -34,14 +38,14 @@ class Tab extends React.Component{
 	       [className]:!!className,
 	   },`${prefixCls}-wrapper`);
 	   const {showDecoration}=this.state;
-       return <div className={classNames} style={style} onClick={()=>this.handleClick(data)}>
+       return <div className={classNames} style={style} >
              <div className={`${prefixCls}-content`}>
-	             <span className={`${prefixCls}-text`} style={{color:isSelected ? '#5582F3' : '#5F7196'}}>
+	             <div className={`${prefixCls}-text`} onClick={()=>this.handleClick(data)} style={{color:isSelected ? '#5582F3' : '#5F7196'}}>
 	                {data.name}
-	             </span>
-	             <span className={`${prefixCls}-del`}>
+	             </div>
+	             <div className={`${prefixCls}-del`} onClick={()=>this.handleDelClick(data)}>
 	                
-	             </span>
+	             </div>
 	         </div>
 	         {this.renderDecoration()}
        </div>
