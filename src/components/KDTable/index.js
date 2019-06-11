@@ -2,6 +2,7 @@ import React from 'react'
 import ClassNames from 'classnames'
 import './index.css'
 import {Table} from "antd";
+import PropTypes from "prop-types";
 
 
 const prefix = 'kd-table-';
@@ -12,11 +13,12 @@ export default class KDTable extends React.Component {
     };
 
     selectRow = (record) => {
+        let key = this.props.rowKey;
         const selectedRowKeys = [...this.state.selectedRowKeys];
-        if (selectedRowKeys.indexOf(record.key) >= 0) {
-            selectedRowKeys.splice(selectedRowKeys.indexOf(record.key), 1);
+        if (selectedRowKeys.indexOf(record[key]) >= 0) {
+            selectedRowKeys.splice(selectedRowKeys.indexOf(record[key]), 1);
         } else {
-            selectedRowKeys.push(record.key);
+            selectedRowKeys.push(record[key]);
         }
         this.onSelectedRowKeysChange(selectedRowKeys)
     };
@@ -37,7 +39,6 @@ export default class KDTable extends React.Component {
 
     render() {
         const {style, className} = this.props;
-        const classNames = ClassNames({[`${className}`]: className,}, `kd-table-wrapper`);
         const {selectedRowKeys} = this.state;
 
         const rowSelection = {
@@ -50,7 +51,6 @@ export default class KDTable extends React.Component {
             position: 'top',
             showSizeChanger: true,
             // onShowSizeChange: this.onShowSizeChange,
-            // total: 500,
             showTotal: (total, range) => {
                 return `${range[0]}-${range[1]} of ${total} items`
             }
@@ -65,6 +65,8 @@ export default class KDTable extends React.Component {
             },
             ...this.props.columns
         ];
+
+        const classNames = ClassNames({[`${className}`]: className,}, `kd-table-wrapper`);
 
         return (
             <div className={classNames} style={style}>
@@ -86,3 +88,13 @@ export default class KDTable extends React.Component {
         )
     }
 }
+
+KDTable.propTypes = {
+    rowKey: PropTypes.string.isRequired,
+    dataSource:PropTypes.array.isRequired,
+    columns:PropTypes.array.isRequired
+};
+
+KDTable.defaultProps = {
+
+};

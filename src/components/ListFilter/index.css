@@ -30,8 +30,11 @@
 
 .kd-lf-condition-option-seleted {
     color: #5E80EB;
+    padding: 2px 7px;
     border: 1px solid #5E80EB;
+    border-radius: 3px;
 }
+
 
 .kd-lf-filter > span {
     margin-left: 8px;
@@ -48,12 +51,22 @@
     margin-top: 8px;
 }
 
+.kd-lf-title{
+    margin: 1px;
+    display: flex;
+    align-items: center;
+}
+
 .kd-lf-condition {
     margin: 1px;
     display: flex;
     align-items: center;
-    /*border: 1px red solid;*/
 }
+
+.kd-lf-condition:not(:last-child){
+    border-bottom: 1px #e2e6ec solid;
+}
+
 
 .kd-lf-filter-item {
     border: 1px #bfc1be solid;

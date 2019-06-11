@@ -13,19 +13,25 @@ class ListFilter extends React.Component {
     constructor(props) {
         super(props);
 
-        let conditions = {};
-        props.filters.forEach(item => {
-                conditions[item.columnName] = []
+        let filter = {}
+        if (this.props.initValue) {
+            filter = this.props.initValue
+        } else {
+            let conditions = {};
+            props.filters.forEach(item => {
+                    conditions[item.columnName] = []
+                }
+            );
+            filter = {
+                name: '',
+                conditions
             }
-        );
+        }
 
         this.state = {
             showFilterConditions: false,
             innerName: '',
-            filter: {
-                name: '',
-                conditions
-            }
+            filter
         };
     }
 
@@ -150,7 +156,7 @@ class ListFilter extends React.Component {
 
         return <div className={classNames} style={style}>
             <div className={'kd-lf-right-wrapper'}>
-                <div className={`${["kd-lf-condition"]}`}>
+                <div className={`${["kd-lf-title"]}`}>
                     <div className={`${"kd-lf-left-wrapper"}`}>
                         {this.props.title}
                     </div>
@@ -162,7 +168,7 @@ class ListFilter extends React.Component {
                         value={this.state.innerName}
                         onKeyDown={this.handleKeyDown}
                         onChange={this.handleFilterInput}
-                        placeholder={"搜索名称"}/>
+                        placeholder={this.props.placeholder || "搜索名称"}/>
                     <span style={{cursor: "pointer"}} onClick={this.handleShowConditions}><Icon
                         type="filter"/>展开过滤</span>
                 </div>
