@@ -9,3 +9,7 @@ export {default as Icon} from './src/components/Icon';
 
 export {default as Toolbar} from './src/components/Toolbar';
 
+export {default as Card} from './src/components/Card';
+
+export {default as KDTable} from './src/components/KDTable';
+

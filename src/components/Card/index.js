@@ -7,7 +7,6 @@ const prefix = "kd-card";
 export default class Card extends React.Component {
 
     hideContent = () => {
-
         this.setState({
             contentHeight: this.state.contentHeight === '0' ? this.children.scrollHeight : '0'
         })

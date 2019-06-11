@@ -70,7 +70,6 @@ export default class KDTable extends React.Component {
             <div className={classNames} style={style}>
                 <Table
                     {...this.props}
-                    rowKey={'fid'||'fID'||'FID'}
                     dataSource={this.props.dataSource}
                     columns={columns}
                     rowSelection={rowSelection}

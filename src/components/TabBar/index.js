@@ -54,8 +54,11 @@ class TabBar extends React.Component{
         if(this.menuList){
             menuListWidth=this.menuList.clientWidth;
         }
-        if(this.menuList > this.menuElWidth)
+        if(this.menuList > this.menuElWidth){
+        }
     }
+
+
     handleTabClick=(item)=>{
        this.setState({
        	  curSelected:item.id,
