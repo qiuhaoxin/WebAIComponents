@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 // import SlideNav from '../../src/components/SlideNav';
 
-import {SlideNav,MenuBar,Tab,Icon} from '../../dist/main.min.js';
+import {SlideNav,MenuBar,Tab,Icon,Tip} from '../../dist/main.min.js';
 import CommonSer from '../images/commonSer.png';
 import {Button} from "antd";
 class App extends Component {
@@ -68,7 +68,8 @@ class App extends Component {
       tabBarData=tabBarData[0];
   	  this.setState({
   	  	tabBarData,
-  	  })
+  	  },()=>{
+      })
   }
   handleMenuTabClick=(curTabId)=>{
       console.log('you click tab id is ',curTabId);
@@ -86,7 +87,11 @@ class App extends Component {
             <SlideNav data={this.data}/>
          </div>
          <div className={'content'}>
+
             <MenuBar data={tabBarData} onMenuTabClick={this.handleMenuTabClick} onMenuDelClick={this.handleMenuDelClick}/>
+            <div style={{position:'relative'}}>
+                <Tip tipContent={'测试'} status={'error'} visible={true} duration={2000}/>
+            </div>
             <div onClick={this.handleAddBtns}>
                添加按钮
             </div>
