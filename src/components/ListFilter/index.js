@@ -36,11 +36,11 @@ class ListFilter extends React.Component {
     }
 
     handleConditionClick = (key, value) => {
-        let conditions = Object.assign([], this.state.filter.conditions);
+        let conditions = Object.assign({}, this.state.filter.conditions);
         Object.keys(conditions).forEach(item => {
             if (item === key) {
                 // 当前key中被选中的部分,暂时只做单选,所以直接替换掉这个值
-                conditions[item] = [value]
+                conditions[key] = [value]
             }
         });
         this.setState({
@@ -48,7 +48,7 @@ class ListFilter extends React.Component {
                 ...this.state.filter,
                 conditions: conditions
             }
-        }, this.props.onChange && this.props.onChange(this.state.filter))
+        }, () => this.props.onChange && this.props.onChange(this.state.filter))
     };
 
     handleFilterInput = (e) => {
@@ -63,12 +63,6 @@ class ListFilter extends React.Component {
 
     handleKeyDown = (e) => {
         if (e.key === 'Enter') {
-
-            // todo test
-            if (this.state.innerName === '12345') {
-                throw new Error("just test")
-            }
-
             this.setState({
                 ...this.state,
                 filter: {
@@ -89,11 +83,13 @@ class ListFilter extends React.Component {
                 name: '',
             },
             innerName: ''
+        }, () => {
+            this.props.onChange && this.props.onChange(this.state.filter)
         })
     };
 
     deleteOptionItem = (e) => {
-        let conditions = Object.assign([], this.state.filter.conditions);
+        let conditions = Object.assign({}, this.state.filter.conditions);
         Object.keys(conditions).forEach(key => {
             if (key === e.columnItem.columnName) {
                 conditions[key] = []
@@ -104,6 +100,8 @@ class ListFilter extends React.Component {
                 ...this.state.filter,
                 conditions: conditions
             }
+        }, () => {
+            this.props.onChange && this.props.onChange(this.state.filter)
         })
     };
 
