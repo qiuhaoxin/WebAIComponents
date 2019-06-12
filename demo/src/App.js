@@ -61,6 +61,7 @@ class App extends Component {
   }
   state={
   	tabBarData:null,
+    showTip:false,
   }
   handleAddBtns=()=>{
   	  const id=Math.floor(Math.random() * 11);
@@ -68,8 +69,8 @@ class App extends Component {
       tabBarData=tabBarData[0];
   	  this.setState({
   	  	tabBarData,
-  	  },()=>{
-      })
+        showTip:true,
+  	  })
   }
   handleMenuTabClick=(curTabId)=>{
       console.log('you click tab id is ',curTabId);
@@ -79,7 +80,7 @@ class App extends Component {
       console.log('current tab id is ',curTabId);
   }
   render() {
-  	const {tabBarData}=this.state;
+  	const {tabBarData,showTip}=this.state;
     return (
       <div className="App">
 
@@ -90,10 +91,14 @@ class App extends Component {
 
             <MenuBar data={tabBarData} onMenuTabClick={this.handleMenuTabClick} onMenuDelClick={this.handleMenuDelClick}/>
             <div style={{position:'relative'}}>
-                <Tip tipContent={'测试'} status={'error'} visible={true} duration={2000}/>
+                <Tip tipContent={'测试'} status={'wranning'} visible={showTip} duration={4000} autoClose={true}/>
             </div>
             <div onClick={this.handleAddBtns}>
                添加按钮
+            </div>
+
+            <div>
+              
             </div>
          </div>
          <div>
