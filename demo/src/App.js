@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 // import SlideNav from '../../src/components/SlideNav';
 
-import {SlideNav,MenuBar,Tab,Icon,Tip} from '../../dist/main.min.js';
+import {SlideNav,MenuBar,Tab,Icon,Tip,message} from '../../dist/main.min.js';
 import CommonSer from '../images/commonSer.png';
 import {Button} from "antd";
 class App extends Component {
@@ -70,7 +70,8 @@ class App extends Component {
   	  this.setState({
   	  	tabBarData,
         showTip:true,
-  	  })
+  	  },()=>{
+      })
   }
   handleMenuTabClick=(curTabId)=>{
       console.log('you click tab id is ',curTabId);
@@ -78,6 +79,12 @@ class App extends Component {
   handleMenuDelClick=(curTabId,delTabId)=>{
       console.log('you del tab id is ',delTabId);
       console.log('current tab id is ',curTabId);
+  }
+  handleClose=()=>{
+      console.log('handleClose')
+      this.setState({
+        showTip:false,
+      })
   }
   render() {
   	const {tabBarData,showTip}=this.state;
@@ -91,7 +98,7 @@ class App extends Component {
 
             <MenuBar data={tabBarData} onMenuTabClick={this.handleMenuTabClick} onMenuDelClick={this.handleMenuDelClick}/>
             <div style={{position:'relative'}}>
-                <Tip tipContent={'测试'} status={'wranning'} visible={showTip} duration={4000} autoClose={true}/>
+                <Tip tipContent={'测试'} status={'wranning'} visible={showTip} duration={1000} autoClose={true} onClose={this.handleClose}/>
             </div>
             <div onClick={this.handleAddBtns}>
                添加按钮

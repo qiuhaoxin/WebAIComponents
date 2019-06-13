@@ -18,9 +18,12 @@ class Tip extends React.Component{
   state={
     showVisible:false,
   }
+  componentWillUpdate(nextProps,nextState){
+      
+  }
   componentWillReceiveProps(nextProps){
     const {visible,autoClose,duration}=nextProps;
-    if(visible && !this.props.visible){
+    if(visible){
       this.setState({
           showVisible:visible,
       },()=>{

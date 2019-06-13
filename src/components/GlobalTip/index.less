@@ -1,0 +1,28 @@
+@prefixCls:kd-globalTip;
+
+
+.@{prefixCls}-wrapper{
+	display: flex;
+	position: absolute;
+	z-index: 101;
+	left:0;
+	width:100%;
+	top:0;
+    height: 0;
+    transition: height .2s ease;
+    &.@{prefixCls}-show{
+       height: 50px;
+    }
+    &.@{prefixCls}-success{
+		background-color: #E6F5F1;
+        color:#26B175;
+    }
+    &.@{prefixCls}-error{
+		background-color: #FFE6E4;
+		color: #FD6C6A ;
+    }
+    &.@{prefixCls}-wranning{
+    	background-color: #FFF3C7;
+		color: #ED812B ;
+    }
+}

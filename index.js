@@ -13,7 +13,10 @@ export {default as Card} from './src/components/Card';
 
 export {default as KDTable} from './src/components/KDTable';
 
- export {default as KDInput} from './src/components/KDInput';
- export {default as Tip} from './src/components/Tip';
+export {default as KDInput} from './src/components/KDInput';
+
+export {default as Tip} from './src/components/Tip';
+
+export {default as message} from './src/components/GlobalTip';
 
  
