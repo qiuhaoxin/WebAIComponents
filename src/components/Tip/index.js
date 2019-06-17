@@ -42,7 +42,11 @@ class Tip extends React.Component{
         _this.setState({
           showVisible:false,
         },()=>{
-          onClose && onClose();
+          _this.tid=setTimeout(function(){
+              onClose && onClose();
+              clearTimeout(_this.tid);
+              _this.tid=-1;
+          },200);
         })
      },duration);
   }

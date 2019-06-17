@@ -1,4 +1,5 @@
 
+
 export {default as SlideNav} from './src/components/SlideNav';
 
 export {default as MenuBar} from './src/components/TabBar';
@@ -19,4 +20,6 @@ export {default as Tip} from './src/components/Tip';
 
 export {default as message} from './src/components/GlobalTip';
 
- 
+export {default as Header} from './src/components/Header';
+
+export {default as ContentCard} from './src/components/ContentCard';

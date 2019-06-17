@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 // import SlideNav from '../../src/components/SlideNav';
 
-import {SlideNav,MenuBar,Tab,Icon,Tip,message} from '../../dist/main.min.js';
+import {SlideNav,MenuBar,Tab,Tip,message,Header,ContentCard} from '@haoxin_qiu/webaicomponents';
 import CommonSer from '../images/commonSer.png';
 import {Button} from "antd";
 class App extends Component {
@@ -62,6 +62,7 @@ class App extends Component {
   state={
   	tabBarData:null,
     showTip:false,
+    test:-1,
   }
   handleAddBtns=()=>{
   	  const id=Math.floor(Math.random() * 11);
@@ -86,30 +87,39 @@ class App extends Component {
         showTip:false,
       })
   }
+  handleLogout=()=>{
+     console.log('you logout!');
+  }
+  handleTest=()=>{
+    this.setState({
+      test:1,
+    })
+  }
   render() {
   	const {tabBarData,showTip}=this.state;
     return (
       <div className="App">
+         <Header className='header' userInfo={{userName:'邱浩新'}} onLogout={this.handleLogout}/>
+         <div className='second'>
+           <div className={'slideNav'}>
+              <SlideNav data={this.data}/>
+           </div>
+           <div className={'content'}>
 
-         <div className={'slideNav'}>
-            <SlideNav data={this.data}/>
-         </div>
-         <div className={'content'}>
-
-            <MenuBar data={tabBarData} onMenuTabClick={this.handleMenuTabClick} onMenuDelClick={this.handleMenuDelClick}/>
-            <div style={{position:'relative'}}>
-                <Tip tipContent={'测试'} status={'wranning'} visible={showTip} duration={1000} autoClose={true} onClose={this.handleClose}/>
-            </div>
-            <div onClick={this.handleAddBtns}>
-               添加按钮
-            </div>
-
-            <div>
+              <MenuBar data={tabBarData} onMenuTabClick={this.handleMenuTabClick} onMenuDelClick={this.handleMenuDelClick}/>
               
-            </div>
-         </div>
-         <div>
-
+              <div style={{position:'relative'}}>
+                  <Tip tipContent={'测试'} status={'wranning'} visible={showTip} duration={1000} autoClose={true} onClose={this.handleClose}/>
+              </div>
+              <ContentCard>
+                <div onClick={this.handleAddBtns}>
+                   添加按钮
+                </div>
+                <div style={{height:2400}} onClick={this.handleTest}>
+                      test
+                </div>
+              </ContentCard>
+           </div>
          </div>
 
       </div>

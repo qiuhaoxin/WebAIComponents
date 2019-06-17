@@ -1,0 +1,40 @@
+@prefixCls:kd-header;
+
+.@{prefixCls}-wrapper{
+	display: inline-flex;
+	width:100%;
+
+	& .@{prefixCls}-leftWrapper{
+	    width:201px;
+	    height:100%;
+	    display:inline-flex;
+	    justify-content:flex-end;
+	    padding-right:40px;
+	    background-image:url('../../images/cqlogo.png');
+	    background-size:114px 35px;
+	    background-repeat:no-repeat;
+	    background-position:center;
+	}
+    & .@{prefixCls}-content{
+    	flex-grow: 1;
+    }
+	& .@{prefixCls}-rightWrapper{
+	    width:200px;
+	    display:inline-flex;
+	    justify-content:flex-end;
+	    margin-right:30px;
+	    & .@{prefixCls}-userInfo{
+	    	display: inline-flex;
+	    	align-items: center;
+	    	& .@{prefixCls}-user{
+	    		display: flex;
+	    		flex-direction: column;
+	    		padding-right: 8px;
+	    	}
+	    	& img{
+	    		width:24px;
+	    		height: 24px;
+	    	}
+	    }
+	}
+}
