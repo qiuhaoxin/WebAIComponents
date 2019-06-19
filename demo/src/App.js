@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 // import SlideNav from '../../src/components/SlideNav';
 
-import { SlideNav, MenuBar, Tab, Tip, message, Header, ContentCard } from '@haoxin_qiu/webaicomponents';
+import { SlideNav, MenuBar, Tab, Tip, message, Header, ContentCard, Loading, Content } from '@haoxin_qiu/webaicomponents';
 import CommonSer from '../images/commonSer.png';
 import { Button } from "antd";
 class App extends Component {
@@ -55,16 +55,23 @@ class App extends Component {
   }
   state = {
     tabBarData: null,
-    showTip: false,
+    tip: null,
     test: -1,
+    showLoading: false,
   }
   handleAddBtns = () => {
     const id = Math.floor(Math.random() * 5);
     let tabBarData = this.tabBarData.filter(item => item.id === id);
     tabBarData = tabBarData[0];
+    let tip = {
+      visible: true,
+      tipContent: '测试',
+      status: 'success',
+    }
     this.setState({
       tabBarData,
-    }, () => {
+      tip,
+      //showLoading: true,
     })
   }
   handleMenuTabClick = (curTabId) => {
@@ -75,16 +82,22 @@ class App extends Component {
     console.log('current tab id is ', curTabId);
   }
   handleClose = () => {
-    console.log('handleClose')
-    this.setState({
-      showTip: false,
-    })
+
   }
   handleLogout = () => {
     console.log('you logout!');
   }
+  handleTipClose = () => {
+    let tip = {
+      visible: false,
+    }
+    this.setState({
+      tip,
+    })
+  }
   render() {
-    const { tabBarData, showTip } = this.state;
+    const { tabBarData, tip, showLoading } = this.state;
+
     return (
       <div className="App">
         <Header className='header' userInfo={{ userName: '邱浩新' }} onLogout={this.handleLogout} />
@@ -95,22 +108,21 @@ class App extends Component {
           <div className={'content'}>
 
             <MenuBar data={tabBarData} onMenuTabClick={this.handleMenuTabClick} onMenuDelClick={this.handleMenuDelClick} />
+            <Content tip={tip} onTipClose={this.handleTipClose} showLoading={showLoading}>
+              <ContentCard>
+                <div onClick={this.handleAddBtns}>
+                  添加按钮
+                </div>
+                <div style={{ height: 900 }}>
+                  test
+                </div>
+              </ContentCard>
+            </Content>
 
-            <div style={{ position: 'relative' }}>
-              <Tip tipContent={'测试'} status={'wranning'} visible={showTip} duration={1000} autoClose={true} onClose={this.handleClose} />
-            </div>
-            <ContentCard>
-              <div onClick={this.handleAddBtns}>
-                添加按钮
-                </div>
-              <div style={{ height: 2400 }}>
-                test
-                </div>
-            </ContentCard>
           </div>
         </div>
 
-      </div>
+      </div >
     );
   }
 }
