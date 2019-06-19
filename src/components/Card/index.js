@@ -23,9 +23,9 @@ export default class Card extends React.Component {
     }
 
     render() {
-        let {title, extra, children} = this.props;
+        let {title, extra, children,style} = this.props;
         return (
-            <div className={`${prefix}-card-wrapper`}>
+            <div className={`${prefix}-card-wrapper`} style={style}>
                 <div className={`${prefix}-head`} >
                     <div className={`${prefix}-title`} onClick={this.hideContent} >
                         <span className={`${prefix}-hide`}><Icon type="down"/></span>
