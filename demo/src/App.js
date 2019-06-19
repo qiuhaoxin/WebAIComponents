@@ -51,12 +51,6 @@ class App extends Component {
       { id: 3, name: '销售订单' },
       { id: 4, name: '销售出库单' },
       { id: 5, name: '采购订单' },
-      { id: 6, name: '出差申请单1' },
-      { id: 7, name: '借款申请单1' },
-      { id: 8, name: '差旅报销单1' },
-      { id: 9, name: '销售订单1' },
-      { id: 10, name: '销售出库单1' },
-      { id: 11, name: '采购订单1' },
     ]
   }
   state = {
@@ -65,12 +59,11 @@ class App extends Component {
     test: -1,
   }
   handleAddBtns = () => {
-    const id = Math.floor(Math.random() * 11);
+    const id = Math.floor(Math.random() * 5);
     let tabBarData = this.tabBarData.filter(item => item.id === id);
     tabBarData = tabBarData[0];
     this.setState({
       tabBarData,
-      showTip: true,
     }, () => {
     })
   }

@@ -1,11 +1,12 @@
 {
   "name": "@haoxin_qiu/webaicomponents",
-  "version": "1.1.6",
+  "version": "1.1.8",
   "description": "ai components for web ai platform",
   "main": "dist/main.min.js",
   "dependencies": {
     "antd": "^3.19.2",
     "class-names": "^1.0.0",
+    "lodash": "^4.17.11",
     "prop-types": "^15.7.2",
     "react": "^16.8.6",
     "react-dom": "^16.8.6"
@@ -29,7 +30,8 @@
   "scripts": {
     "remove": "rimraf dist",
     "prebuild": "npm run remove",
-    "build": "node script/pub.js"
+    "build": "node script/pub.js",
+    "test": "mocha"
   },
   "author": "haoxin_qiu",
   "license": "ISC"
