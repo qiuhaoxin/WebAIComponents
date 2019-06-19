@@ -27,3 +27,5 @@ export { default as ContentCard } from './src/components/ContentCard';
 export { default as Loading } from './src/components/Loading';
 
 export { default as Content } from './src/components/Content';
+
+export { default as BtnBar } from './src/components/BtnBar';

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import './App.css';
 // import SlideNav from '../../src/components/SlideNav';
 
-import { SlideNav, MenuBar, Tab, Tip, message, Header, ContentCard, Loading, Content } from '@haoxin_qiu/webaicomponents';
+import { SlideNav, MenuBar, Tab, Tip, message, Header, ContentCard, Loading, Content, BtnBar } from '@haoxin_qiu/webaicomponents';
 import CommonSer from '../images/commonSer.png';
 import { Button } from "antd";
 class App extends Component {
@@ -95,9 +95,18 @@ class App extends Component {
       tip,
     })
   }
+  handleSaveClick = () => {
+    console.log('you click me!');
+  }
+  handleExitClick = () => {
+    console.log('exit');
+  }
   render() {
     const { tabBarData, tip, showLoading } = this.state;
-
+    const btnArr = [
+      { id: 1, name: '保存', onClick: this.handleSaveClick },
+      { id: 2, name: '退出', onClick: this.handleExitClick },
+    ]
     return (
       <div className="App">
         <Header className='header' userInfo={{ userName: '邱浩新' }} onLogout={this.handleLogout} />
@@ -109,6 +118,9 @@ class App extends Component {
 
             <MenuBar data={tabBarData} onMenuTabClick={this.handleMenuTabClick} onMenuDelClick={this.handleMenuDelClick} />
             <Content tip={tip} onTipClose={this.handleTipClose} showLoading={showLoading}>
+              <div className={'btnbar'}>
+                <BtnBar btnArr={btnArr} />
+              </div>
               <ContentCard>
                 <div onClick={this.handleAddBtns}>
                   添加按钮
