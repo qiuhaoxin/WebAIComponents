@@ -2,9 +2,28 @@ import React, { Component } from 'react';
 import './App.css';
 // import SlideNav from '../../src/components/SlideNav';
 
-import { SlideNav, MenuBar, Tab, Tip, message, Header, ContentCard, Loading, Content, BtnBar } from '@haoxin_qiu/webaicomponents';
+import { SlideNav, MenuBar, Tab, Tip, message, Header, ContentCard, Loading, Content, BtnBar, SampleNav, NLPFrame, NLPWordslot } from '@haoxin_qiu/webaicomponents';
 import CommonSer from '../images/commonSer.png';
 import { Button } from "antd";
+// const intentionList = [
+//   { id: 99, name: '全部样本', extra: 1000 },
+//   { id: 1, name: '出差申请', extra: 40 },
+//   { id: 2, name: '预订机票', extra: 490 },
+//   { id: 3, name: '其他意图', extra: 400 },
+//   { id: 4, name: '出差申请1', extra: 40 },
+//   { id: 5, name: '预订机票1', extra: 490 },
+//   { id: 7, name: '其他意图1', extra: 400 },
+//   { id: 8, name: '出差申请', extra: 40 },
+//   { id: 9, name: '预订机票', extra: 490 },
+//   { id: 10, name: '其他意图', extra: 400 },
+// ]
+const wordslotList = [
+  { id: 1, name: '出发时间' },
+  { id: 2, name: '返回时间' },
+  { id: 3, name: '目的地' },
+  { id: 4, name: '出发地' },
+  { id: 5, name: '事由' },
+]
 class App extends Component {
   constructor(props) {
     super(props);
@@ -58,6 +77,7 @@ class App extends Component {
     tip: null,
     test: -1,
     showLoading: false,
+    showFrame: false,
   }
   handleAddBtns = () => {
     const id = Math.floor(Math.random() * 5);
@@ -71,6 +91,7 @@ class App extends Component {
     this.setState({
       tabBarData,
       tip,
+      showFrame: true,
       //showLoading: true,
     })
   }
@@ -101,8 +122,23 @@ class App extends Component {
   handleExitClick = () => {
     console.log('exit');
   }
+  handleItemClick = (item) => {
+    console.log(`item is `, JSON.stringify(item));
+  }
+  handleTagClick = (item) => {
+    console.log('item is ', JSON.stringify(item));
+  }
+  handleWordslotSelect = (item) => {
+    console.log('you select wordslot is ', JSON.stringify(item));
+  }
+  handleFrameSave = () => {
+    console.log('frame is visible!')
+    this.setState({
+      showFrame: false,
+    })
+  }
   render() {
-    const { tabBarData, tip, showLoading } = this.state;
+    const { tabBarData, tip, showLoading, showFrame } = this.state;
     const btnArr = [
       { id: 1, name: '保存', onClick: this.handleSaveClick },
       { id: 2, name: '退出', onClick: this.handleExitClick },
@@ -125,9 +161,13 @@ class App extends Component {
                 <div onClick={this.handleAddBtns}>
                   添加按钮
                 </div>
-                <div style={{ height: 900 }}>
-                  test
+                <NLPWordslot onClick={this.handleTagClick} item={{ value: '明天', status: 'selected' }} />
+                <NLPWordslot onClick={this.handleTagClick} item={{ value: '明天', status: 'canSelect' }} />
+                <NLPWordslot onClick={this.handleTagClick} item={{ value: '明天', status: 'noSelect' }} />
+                <div style={{ height: 40, marginTop: 20 }}>
+
                 </div>
+                <NLPFrame wordslotList={wordslotList} onChooseWordSlot={this.handleWordslotSelect} onSave={this.handleFrameSave} visible={showFrame} />
               </ContentCard>
             </Content>
 
@@ -139,3 +179,8 @@ class App extends Component {
   }
 }
 export default App;
+
+
+/**
+ *  <SampleNav onItemClick={this.handleItemClick} selected={99} style={{ width: 200, height: 300 }} intentionList={intentionList}></SampleNav>
+ */

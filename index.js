@@ -29,3 +29,9 @@ export { default as Loading } from './src/components/Loading';
 export { default as Content } from './src/components/Content';
 
 export { default as BtnBar } from './src/components/BtnBar';
+
+export { default as SampleNav } from './src/components/SampleNav';
+
+export { default as NLPFrame } from './src/components/NLPFrame';
+
+export { default as NLPWordslot } from './src/components/NLPWordslot';
