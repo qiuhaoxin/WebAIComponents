@@ -152,6 +152,10 @@ class ListFilter extends React.Component {
         domList.push(filterName);
         domList.push(...ary);
 
+        console.log(`domList is : `, domList)
+
+        let showConditions = this.props.filters.length > 0;
+
         return <div className={classNames} style={style}>
             <div className={'kd-lf-right-wrapper'}>
                 <div className={`${["kd-lf-title"]}`}>
@@ -167,11 +171,16 @@ class ListFilter extends React.Component {
                         onKeyDown={this.handleKeyDown}
                         onChange={this.handleFilterInput}
                         placeholder={this.props.placeholder || "搜索名称"}/>
-                    <span style={{cursor: "pointer"}} onClick={this.handleShowConditions}><Icon
-                        type="filter"/>展开过滤</span>
+                    {
+                        showConditions &&
+                        <span style={{cursor: "pointer"}} onClick={this.handleShowConditions}>
+                            <Icon type="filter"/>
+                            展开过滤
+                        </span>
+                    }
                 </div>
             </div>
-            {this.state.showFilterConditions && this.renderConditions()}
+            {this.state.showFilterConditions && showConditions && this.renderConditions()}
         </div>
     }
 }
