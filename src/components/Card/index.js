@@ -2,45 +2,48 @@ import React from 'react'
 import './index.css'
 import {Icon} from "antd";
 import PropTypes from "prop-types";
+import ClassNames from "classnames";
 
 const prefix = "kd-card";
 export default class Card extends React.Component {
 
     hideContent = () => {
-
         this.setState({
-            // contentHeight: this.state.contentHeight === '0' ? this.children.scrollHeight : '0'
-            contentHeight: this.state.contentHeight === '0' ? 'auto' : '0'
+            showContent: !this.state.showContent
         })
     };
 
     state = {
-        contentHeight: 'auto'
+        showContent: true
     };
 
     componentDidMount() {
-        this.setState({
-            // contentHeight:this.children.scrollHeight
-            // contentHeight:this.children.scrollHeight
-        })
+        this.setState({})
     }
 
     render() {
-        let {title, extra, children,style} = this.props;
+        const {style, className} = this.props;
+        const classNames = ClassNames({[`${className}`]: className,}, `${prefix}-card-wrapper`);
+
+        let {title, extra, children} = this.props;
         return (
-            <div className={`${prefix}-card-wrapper`} style={style}>
-                <div className={`${prefix}-head`} >
-                    <div className={`${prefix}-title`} onClick={this.hideContent} >
-                        <span className={`${prefix}-hide`}><Icon type="down"/></span>
+            <div className={classNames} style={style}>
+                <div className={`${prefix}-head`}>
+                    <div className={`${prefix}-title`} onClick={this.hideContent}>
+                        <span className={`${prefix}-hide`}><Icon type="caret-down"/></span>
                         {title}
                     </div>
                     <div className={`${prefix}-extra`}>
                         {extra}
                     </div>
                 </div>
-                <div ref={(e) => this.children = e}
-                     style={{height: this.state.contentHeight}}
-                     className={`${prefix}-content`}
+
+                <div
+
+                    ref={(e) => this.children = e}
+                    // style={{height: this.state.showContent ? 'auto' : '0'}}
+                    style={{display: this.state.showContent ? "block" : 'none'}}
+                    className={`${prefix}-content`}
                 >
                     {children}
                 </div>
@@ -50,6 +53,4 @@ export default class Card extends React.Component {
 }
 
 
-Card.propTypes = {
-
-};
+Card.propTypes = {};
