@@ -23,6 +23,8 @@ class NLPFrame extends React.Component {
         const { visible } = nextProps;
         if (visible) {
             document.addEventListener('click', this.handleDocClick, false);
+        } else {
+            document.removeEventListener('click', this.handleDocClick, false);
         }
     }
     componentWillUnmount() {
@@ -32,6 +34,7 @@ class NLPFrame extends React.Component {
         let parentNode = null;
         if (child && parent) {
             parentNode = child.parentNode;
+            console.log("parent is ", parent);
             while (parentNode) {
                 if (parent == parentNode) {
                     return true;
@@ -47,23 +50,23 @@ class NLPFrame extends React.Component {
         if (target.nodeName != 'LI') {//Select Option
             result = this.isChildOf(target, this.wrapper);
         }
-        const { onSave } = this.props;
+        const { onDocClick } = this.props;//非该面板内的点击 响应函数
         if (result) {
 
         } else {
-            document.removeEventListener('click', this.handleDocClick, false);
-            onSave && onSave();
+            //document.removeEventListener('click', this.handleDocClick, false);
+            onDocClick && onDocClick(target);
         }
     }
-    handleCheckboxClick = (e, item) => {
+    handleCheckboxClick = (e, item, data) => {
         const { onChooseWordSlot } = this.props;
-        onChooseWordSlot && onChooseWordSlot(item);
+        onChooseWordSlot && onChooseWordSlot(item, data);
     }
     renderWordslotList = () => {
-        const { wordslotList, selectedWs } = this.props;
+        const { wordslotList, selectedWs, data } = this.props;
         const str = wordslotList.map(item => {
             const cls = item.id === selectedWs ? 'checked' : '';
-            return <li key={item.id} className={cls} onClick={(e) => this.handleCheckboxClick(e, item)}>
+            return <li key={item.id} className={cls} onClick={(e) => this.handleCheckboxClick(e, item, data)}>
                 <span className={'checkbox'}></span><span style={{ marginLeft: 8 }}>{item.name}</span>
             </li>
         })

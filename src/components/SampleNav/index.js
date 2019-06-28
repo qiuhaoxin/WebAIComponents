@@ -45,13 +45,17 @@ class SampleNav extends Component {
     }
     renderList = () => {
         const { selected } = this.state;
-        const { intentionList } = this.props;
+        const { intentionList, keyStr, extra } = this.props;
         const listStr = intentionList.map(item => <li
             key={item.id}
             onClick={() => this.handleItemClick(item)}
             className={`${selected == item.id ? 'selected' : ''}`}
         >
-            {`${item.name}(${item.sampleCount})`}
+
+            {item[keyStr]}
+            {
+                extra(item)
+            }
         </li>);
         return (
             <ul>
