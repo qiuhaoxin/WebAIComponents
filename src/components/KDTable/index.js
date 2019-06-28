@@ -77,11 +77,11 @@ export default class KDTable extends React.Component {
                     rowSelection={rowSelection}
                     size="small"
                     pagination={pagination}
-                    onRow={(record) => ({
-                        onClick: () => {
-                            this.selectRow(record);
-                        },
-                    })}
+                    // onRow={(record) => ({
+                    //     onClick: () => {
+                    //         this.selectRow(record);
+                    //     },
+                    // })}
                     onChange={this.handleTableChange}
                 />
             </div>
