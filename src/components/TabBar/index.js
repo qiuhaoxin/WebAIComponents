@@ -47,6 +47,27 @@ class TabBar extends React.Component {
       }
     }
   }
+  removeMenuItem = (id, callback) => {
+    const menuData = this.state.menuData.slice();
+    let idx = -1;
+    menuData.forEach((item, index) => {
+      if (item.id === id) {
+        idx = index;
+      }
+    })
+    menuData.splice(idx, 1);
+    let lastItem = null;
+    if (menuData.length > 0) {
+      lastItem = menuData[menuData.length - 1];
+    }
+
+    this.setState({
+      menuData,
+      curSelected: lastItem ? lastItem.id : 99,
+    }, () => {
+      callback && callback(lastItem);
+    })
+  }
   getMenuElWidth = () => {
     let menuElWidth = 0;
     let menuListWidth = 0;
