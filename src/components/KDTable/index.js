@@ -51,9 +51,9 @@ export default class KDTable extends React.Component {
             position: 'top',
             showSizeChanger: true,
             // onShowSizeChange: this.onShowSizeChange,
-            showTotal: (total, range) => {
-                return `${range[0]}-${range[1]} of ${total} items`
-            }
+            // showTotal: (total, range) => {
+            //     return `${range[0]}-${range[1]} of ${total} items`
+            // }
         };
 
         const columns = [
