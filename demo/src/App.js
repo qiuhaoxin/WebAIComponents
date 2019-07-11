@@ -2,21 +2,32 @@ import React, { Component } from 'react';
 import './App.css';
 // import SlideNav from '../../src/components/SlideNav';
 
-import { SlideNav, MenuBar, Tab, Tip, message, Header, ContentCard, Loading, Content, BtnBar, SampleNav, NLPFrame, NLPWordslot } from '@haoxin_qiu/webaicomponents';
+import {
+  SlideNav, MenuBar, Tab, Tip, message, Header, ContentCard, Loading, Content, BtnBar, SampleNav,
+  NLPFrame, NLPWordslot
+} from '@haoxin_qiu/webaicomponents';
 import CommonSer from '../images/commonSer.png';
-import { Button } from "antd";
-// const intentionList = [
-//   { id: 99, name: '全部样本', extra: 1000 },
-//   { id: 1, name: '出差申请', extra: 40 },
-//   { id: 2, name: '预订机票', extra: 490 },
-//   { id: 3, name: '其他意图', extra: 400 },
-//   { id: 4, name: '出差申请1', extra: 40 },
-//   { id: 5, name: '预订机票1', extra: 490 },
-//   { id: 7, name: '其他意图1', extra: 400 },
-//   { id: 8, name: '出差申请', extra: 40 },
-//   { id: 9, name: '预订机票', extra: 490 },
-//   { id: 10, name: '其他意图', extra: 400 },
-// ]
+const intentionList = [
+  { id: 99, name: '全部样本', extra: 1000 },
+  { id: 1, name: '出差申请出差申请出差申请', extra: 40 },
+  { id: 2, name: '预订机票', extra: 490 },
+  { id: 3, name: '其他意图', extra: 400 },
+  { id: 4, name: '出差申请1', extra: 40 },
+  { id: 5, name: '预订机票1', extra: 490 },
+  { id: 7, name: '其他意图1', extra: 400 },
+  { id: 8, name: '出差申请', extra: 40 },
+  { id: 9, name: '预订机票', extra: 490 },
+  { id: 10, name: '其他意图', extra: 400 },
+  { id: 11, name: '出差申请出差申请出差申请', extra: 40 },
+  { id: 12, name: '预订机票', extra: 490 },
+  { id: 13, name: '其他意图', extra: 400 },
+  { id: 14, name: '出差申请1', extra: 40 },
+  { id: 15, name: '预订机票1', extra: 490 },
+  { id: 17, name: '其他意图1', extra: 400 },
+  { id: 18, name: '出差申请', extra: 40 },
+  { id: 19, name: '预订机票', extra: 490 },
+  { id: 20, name: '其他意图', extra: 400 },
+]
 const wordslotList = [
   { id: 1, name: '出发时间' },
   { id: 2, name: '返回时间' },
@@ -126,13 +137,12 @@ class App extends Component {
     console.log(`item is `, JSON.stringify(item));
   }
   handleTagClick = (item) => {
-    console.log('item is ', JSON.stringify(item));
+    // console.log('item is ', JSON.stringify(item));
   }
   handleWordslotSelect = (item) => {
     console.log('you select wordslot is ', JSON.stringify(item));
   }
   handleFrameSave = () => {
-    console.log('frame is visible!')
     this.setState({
       showFrame: false,
     })
@@ -167,7 +177,13 @@ class App extends Component {
                 <div style={{ height: 40, marginTop: 20 }}>
 
                 </div>
-                <NLPFrame wordslotList={wordslotList} onChooseWordSlot={this.handleWordslotSelect} onSave={this.handleFrameSave} visible={showFrame} />
+
+                <SampleNav onItemClick={this.handleItemClick}
+                  keyStr={'name'} selected={99}
+                  style={{ width: 200, height: 300 }}
+                  intentionList={intentionList}
+                  onScroll={() => console.log('hei ')}
+                ></SampleNav>
               </ContentCard>
             </Content>
 
@@ -182,5 +198,8 @@ export default App;
 
 
 /**
- *  <SampleNav onItemClick={this.handleItemClick} selected={99} style={{ width: 200, height: 300 }} intentionList={intentionList}></SampleNav>
+ *
+ *                <NLPFrame wordslotList={wordslotList} onChooseWordSlot={this.handleWordslotSelect} onSave={this.handleFrameSave} visible={true} />
+ *
+ *
  */

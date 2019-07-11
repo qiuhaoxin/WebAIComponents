@@ -8,7 +8,7 @@
     display: flex;
     flex-direction: column;
     overflow: auto;
-
+    overflow-x:hidden;
     & .@{prefixCls}-innerWrapper{
         padding-top:8px;
         font-size: 14px;
@@ -24,6 +24,12 @@
                 &.selected{
                     color:#fff;
                     background-color: #5582F3;
+                }
+                & .mainInfo{
+                    width:80%;
+                    text-overflow: ellipsis;
+                    white-space: nowrap;
+                    overflow:hidden;
                 }
             }
         }
