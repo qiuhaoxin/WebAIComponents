@@ -49,6 +49,7 @@ class TabBar extends React.Component {
   }
   removeMenuItem = (id, callback) => {
     const menuData = this.state.menuData.slice();
+
     let idx = -1;
     menuData.forEach((item, index) => {
       if (item.id === id) {
