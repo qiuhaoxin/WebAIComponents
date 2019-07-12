@@ -26,11 +26,19 @@ export default class Card extends React.Component {
         const classNames = ClassNames({[`${className}`]: className,}, `${prefix}-card-wrapper`);
 
         let {title, extra, children} = this.props;
+
+        const angle = this.state.showContent ? '0deg' : '-90deg'
+
+        const iconStyle = {
+            transform: `rotate(${angle})`,
+            transition: 'transform 0.3s linear'
+        }
+
         return (
             <div className={classNames} style={style}>
                 <div className={`${prefix}-head`}>
                     <div className={`${prefix}-title`} onClick={this.hideContent}>
-                        <span className={`${prefix}-hide`}><Icon type="caret-down"/></span>
+                        <span className={`${prefix}-hide`}><Icon style={iconStyle} type="caret-down"/></span>
                         {title}
                     </div>
                     <div className={`${prefix}-extra`}>
@@ -39,9 +47,6 @@ export default class Card extends React.Component {
                 </div>
 
                 <div
-
-                    ref={(e) => this.children = e}
-                    // style={{height: this.state.showContent ? 'auto' : '0'}}
                     style={{display: this.state.showContent ? "block" : 'none'}}
                     className={`${prefix}-content`}
                 >
