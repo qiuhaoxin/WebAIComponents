@@ -35,3 +35,5 @@ export { default as SampleNav } from './src/components/SampleNav';
 export { default as NLPFrame } from './src/components/NLPFrame';
 
 export { default as NLPWordslot } from './src/components/NLPWordslot';
+
+export { default as LocalLoading } from './src/components/LocalLoading';
