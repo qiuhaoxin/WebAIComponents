@@ -152,8 +152,6 @@ class ListFilter extends React.Component {
         domList.push(filterName);
         domList.push(...ary);
 
-        // console.log(`domList is : `, domList)
-
         let showConditions = this.props.filters.length > 0;
 
         return <div className={classNames} style={style}>
