@@ -60,7 +60,9 @@
 .kd-lf-condition {
     margin: 1px;
     display: flex;
+    flex-wrap: wrap;
     align-items: center;
+
 }
 
 .kd-lf-condition:not(:last-child){
