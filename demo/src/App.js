@@ -129,6 +129,7 @@ class App extends Component {
   }
   handleSaveClick = () => {
     console.log('you click me!');
+    message.success('ee');
   }
   handleExitClick = () => {
     console.log('exit');
@@ -160,7 +161,7 @@ class App extends Component {
           <div className={'slideNav'}>
             <SlideNav data={this.data} />
           </div>
-          <div className={'content'}>
+          <div className={'content'} ref={el => this.wrapper = el}>
 
             <MenuBar data={tabBarData} onMenuTabClick={this.handleMenuTabClick} onMenuDelClick={this.handleMenuDelClick} />
             <Content tip={tip} onTipClose={this.handleTipClose} showLoading={showLoading}>
