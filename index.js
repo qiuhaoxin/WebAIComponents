@@ -18,7 +18,7 @@ export { default as KDInput } from './src/components/KDInput';
 
 export { default as Tip } from './src/components/Tip';
 
-export { default as message } from './src/components/GlobalTip';
+// export { default as message } from './src/components/GlobalTip';
 
 export { default as Header } from './src/components/Header';
 
@@ -37,3 +37,5 @@ export { default as NLPFrame } from './src/components/NLPFrame';
 export { default as NLPWordslot } from './src/components/NLPWordslot';
 
 export { default as LocalLoading } from './src/components/LocalLoading';
+
+export { default as message } from './src/components/message';

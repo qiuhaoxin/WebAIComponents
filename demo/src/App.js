@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import './App.css';
 // import SlideNav from '../../src/components/SlideNav';
 
@@ -90,21 +91,25 @@ class App extends Component {
     showLoading: false,
     showFrame: false,
   }
+  componentDidMount() {
+    message.config({ getContainer: this.getContainer })
+  }
   handleAddBtns = () => {
-    const id = Math.floor(Math.random() * 5);
-    let tabBarData = this.tabBarData.filter(item => item.id === id);
-    tabBarData = tabBarData[0];
-    let tip = {
-      visible: true,
-      tipContent: '测试',
-      status: 'success',
-    }
-    this.setState({
-      tabBarData,
-      tip,
-      showFrame: true,
-      //showLoading: true,
-    })
+    // const id = Math.floor(Math.random() * 5);
+    // let tabBarData = this.tabBarData.filter(item => item.id === id);
+    // tabBarData = tabBarData[0];
+    // let tip = {
+    //   visible: true,
+    //   tipContent: '测试',
+    //   status: 'success',
+    // }
+    // this.setState({
+    //   tabBarData,
+    //   tip,
+    //   showFrame: true,
+    //   //showLoading: true,
+    // })
+    message.error('出错啦!')
   }
   handleMenuTabClick = (curTabId) => {
     console.log('you click tab id is ', curTabId);
@@ -127,12 +132,20 @@ class App extends Component {
       tip,
     })
   }
+  getContainer = () => {
+    if (this.wrapper) {
+      return ReactDOM.findDOMNode(this.wrapper);
+      //return document.getElementById('contentCard');
+    }
+  }
   handleSaveClick = () => {
-    console.log('you click me!');
-    message.success('ee');
+
+    message.success('成功!');
   }
   handleExitClick = () => {
     console.log('exit');
+    message.warning('警告！');
+
   }
   handleItemClick = (item) => {
     console.log(`item is `, JSON.stringify(item));
@@ -161,20 +174,17 @@ class App extends Component {
           <div className={'slideNav'}>
             <SlideNav data={this.data} />
           </div>
-          <div className={'content'} ref={el => this.wrapper = el}>
+          <div className={'content'}>
 
             <MenuBar data={tabBarData} onMenuTabClick={this.handleMenuTabClick} onMenuDelClick={this.handleMenuDelClick} />
             <Content tip={tip} onTipClose={this.handleTipClose} showLoading={showLoading}>
               <div className={'btnbar'}>
                 <BtnBar btnArr={btnArr} />
               </div>
-              <ContentCard>
+              <ContentCard ref={el => this.wrapper = el}>
                 <div onClick={this.handleAddBtns}>
                   添加按钮
                 </div>
-                <NLPWordslot onClick={this.handleTagClick} item={{ value: '明天', status: 'selected' }} />
-                <NLPWordslot onClick={this.handleTagClick} item={{ value: '明天', status: 'canSelect' }} />
-                <NLPWordslot onClick={this.handleTagClick} item={{ value: '明天', status: 'noSelect' }} />
                 <div style={{ height: 40, marginTop: 20 }}>
 
                 </div>
