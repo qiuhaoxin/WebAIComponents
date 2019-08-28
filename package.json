@@ -1,6 +1,6 @@
 {
   "name": "@haoxin_qiu/webaicomponents",
-  "version": "1.3.6",
+  "version": "1.3.8",
   "description": "ai components for web ai platform",
   "main": "dist/main.min.js",
   "dependencies": {

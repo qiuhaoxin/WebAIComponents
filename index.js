@@ -39,3 +39,5 @@ export { default as NLPWordslot } from './src/components/NLPWordslot';
 export { default as LocalLoading } from './src/components/LocalLoading';
 
 export { default as message } from './src/components/message';
+
+export { default as Indicator } from './src/components/Indicator';

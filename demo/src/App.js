@@ -5,7 +5,7 @@ import './App.css';
 
 import {
   SlideNav, MenuBar, Tab, Tip, message, Header, ContentCard, Loading, Content, BtnBar, SampleNav,
-  NLPFrame, NLPWordslot
+  NLPFrame, NLPWordslot, Indicator
 } from '@haoxin_qiu/webaicomponents';
 import CommonSer from '../images/commonSer.png';
 const intentionList = [
@@ -188,7 +188,7 @@ class App extends Component {
                 <div style={{ height: 40, marginTop: 20 }}>
 
                 </div>
-
+                <Indicator initialValue={10} labelText='显示行数' />
                 <SampleNav onItemClick={this.handleItemClick}
                   keyStr={'name'} selected={99}
                   style={{ width: 200, height: 300 }}
