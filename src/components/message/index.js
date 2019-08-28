@@ -17,7 +17,7 @@ class Notification extends React.Component {
         content: '',
         status: '',
     }
-    show = (content, status, duration) => {
+    show = (content, status, duration = 1500) => {
         let _this = this;
         this.setState({
             visible: true,
@@ -28,7 +28,7 @@ class Notification extends React.Component {
                 _this.setState({
                     visible: false,
                 })
-            }, 1500)
+            }, duration)
         })
     }
     hide = () => {
@@ -77,7 +77,11 @@ Notification.newInstance = function (options, callback) {
     div.style.cssText = ";position:absolute;left:0;width:100%;top:0;";
     let root = null;
     if (getContainer) {
-        root = getContainer();
+        if (typeof getContainer === 'function') {
+            root = getContainer();
+        }else if(getContainer instanceof HTMLElement){
+            root = getContainer
+        }
         root.appendChild(div)
     } else {
         document.body.appendChild(div);
@@ -93,7 +97,10 @@ Notification.newInstance = function (options, callback) {
                 div.parentNode.removeChild(div);
             },
             show: function (content, duration, status, onClose) {
+                console.group("message")
+                console.log(`getContainer is : `, getContainer)
                 console.log('notification call is ', notification)
+                console.groupEnd()
                 notification.show(content, status, duration, onClose);
             },
             hide: function () {

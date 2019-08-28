@@ -1,11 +1,13 @@
 import React from 'react'
-import {Icon} from "antd";
+import {Icon, DatePicker} from "antd";
 import ClassNames from "classnames";
 import './index.css'
 import withErrorHandler from "../Error/withErrorHandle";
 import PropTypes from 'prop-types'
 import KDInput from "../KDInput";
+import _ from 'lodash'
 
+const {RangePicker} = DatePicker
 const prefix = 'kd-lf-';
 
 class ListFilter extends React.Component {
@@ -19,9 +21,8 @@ class ListFilter extends React.Component {
         } else {
             let conditions = {};
             props.filters.forEach(item => {
-                    conditions[item.columnName] = []
-                }
-            );
+                conditions[item.columnName] = []
+            });
             filter = {
                 name: '',
                 conditions
@@ -109,9 +110,12 @@ class ListFilter extends React.Component {
         const filters = this.props.filters;
         let columnItem = filters.filter(item => item.columnName === columnName)[0];
         let targetOption = columnItem.options.filter(item => {
+            // todo 写死了单选，之后如果要支持多选这个地方逻辑要做修改
+            if (item.type === "rangePicker" && !_.isEmpty(seletedOptions[0]) && seletedOptions[0].type === 'dynamicRangePicker') {
+                return item
+            }
             return seletedOptions.some(seleteOption => seleteOption === item.value)
         });
-
         return {
             columnItem: columnItem,
             targetOption: targetOption
@@ -189,15 +193,30 @@ class Condition extends React.Component {
         const key = Object.keys(this.props.conditions).filter(item => item === data.columnName);
         const seleted = this.props.conditions[key];
         const doms = data.options.map((item, index) => {
-            return (
-                <span
-                    key={index}
-                    className={`kd-lf-condition-option ${seleted.some(selItem => selItem === item.value) ? 'kd-lf-condition-option-seleted' : ''}`}
-                    onClick={() => this.props.click(key[0], item.value)}
-                >
+            if (item.type === "rangePicker") {
+                return <RangePicker
+                    key={-1} onChange={(e) => {
+                    let obj = {}
+                    if (!_.isEmpty(e)) {
+                        obj = {
+                            startTime: e[0].format('YYYY-MM-DD'),
+                            endTime: e[1].format('YYYY-MM-DD'),
+                            type: 'dynamicRangePicker'
+                        }
+                    }
+                    this.props.click(key[0], obj)
+                }}/>
+            } else {
+                return (
+                    <span
+                        key={index}
+                        className={`kd-lf-condition-option ${seleted.some(selItem => selItem === item.value) ? 'kd-lf-condition-option-seleted' : ''}`}
+                        onClick={() => this.props.click(key[0], item.value)}
+                    >
                     {item.key}
                 </span>
-            )
+                )
+            }
         });
         return <div className={'kd-lf-condition'}>
             <span className={'kd-lf-condition-title'}>{data.title}:</span>
